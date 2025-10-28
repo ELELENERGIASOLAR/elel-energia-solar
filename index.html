@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ELEL Energia Solar</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome Free Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-oB1BC9w1Rq6LSrQ9PwI9B+2HPpQwO/Bn1im0oYmvENo+sfkD8+E5O6g17tDyRwbtp9KIVCC4jw66Jqj8PpE2cg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Inlined styles to ensure proper loading when served as a local file -->
+    <style>
+      /* Global Styles */
+      :root {
+        --primary-color: #ffb400; /* warm yellow for highlights */
+        --secondary-color: #f47b20; /* orange accent */
+        --dark-blue: #03396c; /* dark blue for text */
+        --light-gray: #f9f9f9; /* light background */
+        --white: #ffffff;
+        --font-family: 'Montserrat', Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-family);
+        color: var(--dark-blue);
+        line-height: 1.6;
+        background-color: var(--white);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      /* Navigation */
+      .navbar {
+        background-color: var(--white);
+        padding: 1rem 0;
+        border-bottom: 1px solid #eaeaea;
+      }
+
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-img {
+        height: 60px;
+        width: auto;
+      }
+
+      /* Hero Section */
+      .hero {
+        background-color: var(--light-gray);
+        padding: 4rem 0;
+      }
+
+      .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero-text {
+        max-width: 600px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--dark-blue);
+      }
+
+      .hero-text p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .btn-cta {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-cta:hover {
+        background-color: var(--primary-color);
+      }
+
+      .hero-icon {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: radial-gradient(circle at center, var(--primary-color) 40%, var(--secondary-color) 80%);
+        margin-top: 2rem;
+        position: relative;
+      }
+      /* Add simple rays around the sun using pseudo elements */
+      .hero-icon::before,
+      .hero-icon::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        border: 8px solid var(--primary-color);
+        box-sizing: border-box;
+        opacity: 0.4;
+      }
+      .hero-icon::after {
+        width: 300px;
+        height: 300px;
+        border-width: 4px;
+        opacity: 0.25;
+      }
+
+      /* Benefits Section */
+      .benefits {
+        padding: 4rem 0;
+        background-color: var(--white);
+      }
+
+      .benefits h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--dark-blue);
+      }
+
+      .benefits-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 2rem;
+      }
+
+      .benefit-item {
+        flex: 1 1 30%;
+        background-color: var(--light-gray);
+        padding: 2rem;
+        border-radius: 8px;
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .benefit-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .benefit-item img {
+        height: 60px;
+        width: auto;
+        margin-bottom: 1rem;
+      }
+
+      .benefit-item h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--dark-blue);
+      }
+
+      .benefit-item p {
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      /* Contact Section */
+      .contact {
+        padding: 4rem 0;
+        background-color: var(--light-gray);
+      }
+
+      .contact h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+        font-size: 2rem;
+        color: var(--dark-blue);
+      }
+
+      .contact p {
+        text-align: center;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: var(--white);
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--dark-blue);
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-family: var(--font-family);
+      }
+
+      .btn-submit {
+        display: inline-block;
+        background-color: var(--secondary-color);
+        color: var(--white);
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      .btn-submit:hover {
+        background-color: var(--primary-color);
+      }
+
+      /* Logos Section */
+      .logos {
+        padding: 4rem 0;
+        background-color: var(--white);
+      }
+
+      .logos h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        color: var(--dark-blue);
+      }
+
+      .logos-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+      }
+
+      .logos-grid img {
+        height: 100px;
+        width: auto;
+        max-width: 100%;
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--dark-blue);
+        color: var(--white);
+        padding: 1rem 0;
+        text-align: center;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Styles */
+      @media (min-width: 768px) {
+        .hero-content {
+          flex-direction: row;
+          text-align: left;
+        }
+        .hero-text {
+          flex: 1;
+          margin-right: 2rem;
+        }
+        .hero-icon {
+          flex: none;
+          margin-top: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .benefit-item {
+          flex: 1 1 100%;
+        }
+        .hero-icon {
+          font-size: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header / Navigation -->
+    <header class="navbar">
+      <div class="container nav-wrapper">
+        <a href="#" class="logo-link">
+          <img
+            src="logo2.png"
+            alt="Logo ELEL Energia Solar"
+            class="logo-img"
+          />
+        </a>
+        <nav class="nav-menu">
+          <!-- you could add nav links here if needed -->
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Energia Solar para o Seu Lar</h1>
+          <p>
+            Descubra como transformar a luz do sol em economia e sustentabilidade
+            para sua casa ou empresa. A ELEL Energia Solar oferece soluções
+            completas de energia fotovoltaica com qualidade e confiança.
+          </p>
+          <a href="#contato" class="btn-cta">Orçamento Grátis</a>
+        </div>
+        <div class="hero-icon">
+          <!-- Large decorative sun created with CSS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits" id="vantagens">
+      <div class="container">
+        <h2>Vantagens</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <img src="coins.png" alt="Ícone de economia" />
+            <h3>Economia de Energia</h3>
+            <p>
+              Reduza sua conta de luz gerando sua própria energia. A energia
+              solar pode representar uma economia significativa todos os
+              meses.
+            </p>
+          </div>
+          <div class="benefit-item">
+            <img src="leaf.png" alt="Ícone de sustentabilidade" />
+            <h3>Sustentabilidade</h3>
+            <p>
+              Produza energia limpa e renovável, contribuindo para a
+              preservação do meio ambiente e diminuindo a emissão de CO₂.
+            </p>
+          </div>
+          <div class="benefit-item">
+            <img src="bolt.png" alt="Ícone de instalação rápida" />
+            <h3>Instalação Rápida</h3>
+            <p>
+              Equipe especializada e pronta para instalar seu sistema de
+              energia solar de forma segura, eficiente e sem complicações.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contato">
+      <div class="container">
+        <h2>Fale Conosco</h2>
+        <p>
+          Entre em contato para solicitar um orçamento ou tirar dúvidas. Nosso
+          time está pronto para atendê-lo.
+        </p>
+        <form
+          class="contact-form"
+          onsubmit="event.preventDefault(); alert('Mensagem enviada! Em breve entraremos em contato.');"
+        >
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              placeholder="Seu nome"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Seu e-mail"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem</label>
+            <textarea
+              id="mensagem"
+              name="mensagem"
+              rows="5"
+              placeholder="Como podemos ajudar?"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Logos Section -->
+    <section class="logos">
+      <div class="container">
+        <h2>Nossas Logos</h2>
+        <div class="logos-grid">
+          <img
+            src="logo1.png"
+            alt="Logo alternativa da ELEL Energia Solar"
+          />
+          <img
+            src="logo2.png"
+            alt="Logo horizontal da ELEL Energia Solar"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2025 ELEL Energia Solar. Todos os direitos reservados.</p>
+      </div>
+    </footer>
+  </body>
+</html>
